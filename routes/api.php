@@ -32,6 +32,10 @@ Route::get('/films', function () {
     return \App\Film::all();
 });
 
+Route::get('/films/{film}', function (\App\Film $film) {
+    return $film;
+});
+
 //Route::get('/user', function() {
 //    return Auth::user();
 //});
