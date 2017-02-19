@@ -28,6 +28,10 @@ Route::get('/test', function (Request $request) {
     return ['message' => 'hello world'];
 });
 
+Route::get('/films', function () {
+    return \App\Film::all();
+});
+
 //Route::get('/user', function() {
 //    return Auth::user();
 //});
