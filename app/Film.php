@@ -11,6 +11,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Film
+ * @package App
+ * @property int $id
+ * @property string $name
+ * @property string $cover
+ * @property string $background_image
+ * @property string $introduction
+ * @property int $runtime
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class Film extends Model
 {
     protected $fillable = [
@@ -31,5 +43,10 @@ class Film extends Model
     {
         $base = \Config::get('url.static_base');
         return $base . $this->background_image;
+    }
+
+    public function events()
+    {
+        return $this->hasMany('App\Event');
     }
 }
