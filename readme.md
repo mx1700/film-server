@@ -21,6 +21,7 @@ $ composer install
 ``` bash
 $ php artisan migrate
 $ php artisan db:seed --class=UserTableSeeder
+$ php artisan db:seed --class=EventTableSeeder
 ```
 
 ####运行开发服务器
@@ -45,12 +46,9 @@ ftp: v0.ftp.upyun.com
 
 获取单个电影 /api/films/1
 
+获取电影互动内容 /api/films/1/events
+
 ## TODO
-1. 部署测试环境
-1. 创建 events 表结构
-1. acr 后台上传测试识别视频
-1. upyun 上传 app 播放视频和图片
-1. 创建 events 数据填充
 1. 电影管理页面
 1. 事件管理页面
 1. 启动屏配置
@@ -61,3 +59,9 @@ ftp: v0.ftp.upyun.com
 ## DONE
 1. 电影列表返回 url 地址
 1. 创建获取单个电影信息 api
+1. 部署测试环境
+1. 创建 events 表结构
+1. 创建获取 events api
+1. acr 后台上传测试识别视频
+1. upyun 上传 app 播放视频和图片
+1. 创建获取 events api
