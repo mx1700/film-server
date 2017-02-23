@@ -17,7 +17,8 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->integer('film_id');
             $table->integer('type');
-            $table->time('time');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->text('resources', 100);
             $table->timestamps();
         });
