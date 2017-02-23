@@ -16,7 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $film_id
  * @property int $type
- * @property string $time
+ * @property string $start_time
+ * @property string $end_time
  * @property string $resources
  * @property string $created_at
  * @property string $updated_at
