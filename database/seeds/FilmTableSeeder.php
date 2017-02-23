@@ -16,7 +16,8 @@ class FilmTableSeeder extends Seeder
             'cover' =>'cover/1.jpg',
             'background_image' => 'background/1.jpg',
             'introduction' => '　　奇伦（艾什顿·桑德斯 Ashton Sanders 饰）的母亲宝拉（娜奥米·哈里斯 Naomie Harris 饰）吸毒成瘾根本无心照顾孩子，奇伦从小在孤独中长大，因为过于瘦小的身材而时常遭到周围人的欺侮和作弄。一次偶然中，奇伦结识了毒贩胡安（马赫沙拉·阿里 Maher shala Ali 饰），从此，胡安和其女友特蕾莎（加奈儿·梦奈 Janelle Monae 饰）的住处成为了奇伦的第二个家。 ',
-            'runtime' => 111
+            'runtime' => 111,
+            'tips' => '这里是提示信息'
         ]);
 
         \App\Film::create([
