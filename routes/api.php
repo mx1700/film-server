@@ -36,6 +36,10 @@ Route::get('/films/{film}', function (\App\Film $film) {
     return $film;
 });
 
+Route::get('/films/{film}/events', function (\App\Film $film) {
+    return $film->events()->orderBy('time')->get();
+});
+
 //Route::get('/user', function() {
 //    return Auth::user();
 //});
