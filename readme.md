@@ -22,6 +22,7 @@ $ composer install
 $ php artisan migrate
 $ php artisan db:seed --class=UserTableSeeder
 $ php artisan db:seed --class=EventTableSeeder
+$ php artisan db:seed --class=LocationCardTableSeeder
 ```
 
 ####运行开发服务器
@@ -44,13 +45,15 @@ ftp: v0.ftp.upyun.com
 
 获取电影列表 /api/films
 
-获取单个电影 /api/films/1
+获取单个电影信息 /api/films/1
 
 获取电影互动内容 /api/films/1/events
+获取电影地点卡 /api/films/1/location-cards
 
 ## TODO
 1. 电影管理页面
 1. 事件管理页面
+1. 地点卡管理页面
 1. 启动屏配置
 1. 帮助配置
 1. 关于配置
@@ -65,3 +68,8 @@ ftp: v0.ftp.upyun.com
 1. acr 后台上传测试识别视频
 1. upyun 上传 app 播放视频和图片
 1. 创建获取 events api
+1. film 表增加 提示 列
+1. 测试数据增加提示列数据
+1. events 表增加开始时间结束时间
+1. events 测试数据增加开始时间结束时间
+1. 地点卡接口
