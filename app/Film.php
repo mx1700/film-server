@@ -32,7 +32,7 @@ class Film extends Model
 
     protected $appends = ['cover_url', 'background_image_url'];
 
-    protected $hidden = ['cover', 'background_image'];
+    protected $hidden = ['cover', 'background_image', 'created_at', 'updated_at'];
 
     public function getCoverUrlAttribute()
     {
@@ -49,5 +49,10 @@ class Film extends Model
     public function events()
     {
         return $this->hasMany('App\Event');
+    }
+
+    public function locationCards()
+    {
+        return $this->hasMany('App\LocationCard');
     }
 }

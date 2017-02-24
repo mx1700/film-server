@@ -32,7 +32,7 @@ class Event extends Model
         'film_id', 'type', 'time', 'resources'
     ];
 
-    protected $hidden = ['resources'];
+    protected $hidden = ['resources', 'created_at', 'updated_at'];
 
     protected $appends = ['resources_url'];
 

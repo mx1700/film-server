@@ -33,11 +33,18 @@ Route::get('/films', function () {
 });
 
 Route::get('/films/{film}', function (\App\Film $film) {
-    return $film;
+    $ret = $film->toArray();
+    $ret['events'] = $film->events()->orderBy('start_time')->get();
+    $ret['location_cards'] = $film->locationCards()->orderBy('start_time')->get();
+    return $ret;
 });
 
 Route::get('/films/{film}/events', function (\App\Film $film) {
     return $film->events()->orderBy('start_time')->get();
+});
+
+Route::get('/films/{film}/location-cards', function (\App\Film $film) {
+    return $film->locationCards()->orderBy('start_time')->get();
 });
 
 //Route::get('/user', function() {
