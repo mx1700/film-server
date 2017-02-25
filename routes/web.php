@@ -17,11 +17,12 @@
 
 Auth::routes();
 Route::resource('films', 'FilmController');
-Route::resource('events', 'EventController');
-Route::resource('location-cards', 'LocationCardController');
+Route::resource('films/{film}/events', 'EventController');
+Route::resource('films/{film}/location-cards', 'LocationCardController');
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
 $this->get('/auth/change-password', 'Auth\ChangePasswordController@showForm')->name('change-password');
 $this->post('/auth/change-password', 'Auth\ChangePasswordController@changePassword');
+
