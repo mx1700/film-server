@@ -51,7 +51,7 @@ ftp: v0.ftp.upyun.com
 获取电影地点卡 /api/films/1/location-cards
 
 ## TODO
-1. 电影管理页面
+1. 时长改为 time 类型
 1. 事件管理页面
 1. 地点卡管理页面
 1. 启动屏配置
@@ -73,3 +73,5 @@ ftp: v0.ftp.upyun.com
 1. events 表增加开始时间结束时间
 1. events 测试数据增加开始时间结束时间
 1. 地点卡接口
+1. 电影管理页面
+

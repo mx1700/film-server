@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
 class Film extends Model
 {
     protected $fillable = [
-        'name', 'cover', 'background_image', 'introduction', 'runtime'
+        'name', 'cover', 'background_image', 'introduction', 'runtime', 'tips'
     ];
 
     protected $appends = ['cover_url', 'background_image_url'];
