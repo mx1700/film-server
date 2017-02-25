@@ -27,7 +27,7 @@
                     <a class="btn btn-default">
                         地点卡
                     </a>
-                    <a class="btn btn-default">事件</a>
+                    <a href="{{ route('events.index', ['film' => $film->id]) }}" class="btn btn-default">事件</a>
                     <a href="{{ route('films.edit', [ 'id' => $film->id]) }}" class="btn btn-default">编辑</a>
                 </td>
             </tr>
