@@ -12,9 +12,14 @@
 $ composer install
 ```
 
-####配置数据库
+####配置
 
 配置在 .env 文件的 DB 配置节点
+
+初始化加密串
+```bash
+$ php artisan key:generate
+```
 
 
 ####初始化数据库
