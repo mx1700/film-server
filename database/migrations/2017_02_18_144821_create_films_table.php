@@ -19,7 +19,7 @@ class CreateFilmsTable extends Migration
             $table->string('cover', 100);
             $table->string('background_image', 100)->nullable();
             $table->text('introduction')->nullable();
-            $table->integer('runtime');
+            $table->time('runtime');
             $table->timestamps();
         });
     }

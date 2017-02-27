@@ -60,10 +60,10 @@
             </div>
 
             <div class="form-group{{ $errors->has('runtime') ? ' has-error' : '' }}">
-                <label for="runtime" class="col-md-2 control-label">影片时长(分钟)</label>
+                <label for="runtime" class="col-md-2 control-label">影片时长</label>
 
                 <div class="col-md-2">
-                    <input id="runtime" type="text" class="form-control"
+                    <input id="runtime" type="text" class="form-control" placeholder="00:00:00"
                            name="runtime" value="{{ old('runtime', $film->runtime) }}" required>
 
                     @if ($errors->has('runtime'))
@@ -133,5 +133,10 @@
         }
         return false;
     }
+    new Cleave('#runtime', {
+        delimiter: ':',
+        blocks: [2, 2, 2],
+        numericOnly: true
+    });
 </script>
 @endsection
