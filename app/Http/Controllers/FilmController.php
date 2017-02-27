@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Film;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class FilmController extends Controller
 {
@@ -41,8 +43,9 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        //TODO:校验
         $input = $request->all();
+        $this->validator($input)->validate();
+
         Film::create($input);
         return redirect()->route('films.index');
     }
@@ -78,8 +81,9 @@ class FilmController extends Controller
      */
     public function update(Request $request, Film $film)
     {
-        //TODO:校验
         $input = $request->all();
+        $this->validator($input)->validate();
+
         $film->fill($input);
         $film->save();
         return redirect()->route('films.index');
@@ -95,5 +99,27 @@ class FilmController extends Controller
     {
         $film->delete();
         return redirect()->route('films.index');
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        $message = [
+            'required' => '不能为空',
+            'numeric' => '必须是数字'
+        ];
+
+        return Validator::make($data, [
+            'name' => 'required',
+            'cover' => 'required',
+            'runtime' => 'required|numeric',
+            'introduction' => 'required',
+            'tips' => 'required',
+        ], $message);
     }
 }

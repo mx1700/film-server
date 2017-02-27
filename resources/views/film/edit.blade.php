@@ -29,11 +29,12 @@
             </div>
             @endif
 
-            <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name" class="col-md-2 control-label">影片名称</label>
 
                 <div class="col-md-3">
-                    <input id="name" type="text" class="form-control" name="name" value="{{$film->name}}" required>
+                    <input id="name" type="text" class="form-control"
+                           name="name" value="{{ old('name', $film->name) }}" required>
 
                     @if ($errors->has('name'))
                         <span class="help-block">
@@ -47,7 +48,8 @@
                 <label for="cover" class="col-md-2 control-label">封面</label>
 
                 <div class="col-md-3">
-                    <input id="cover" type="text" class="form-control" name="cover" value="{{$film->cover}}" required>
+                    <input id="cover" type="text" class="form-control"
+                           name="cover" value="{{ old('cover', $film->cover) }}" required>
 
                     @if ($errors->has('cover'))
                         <span class="help-block">
@@ -61,7 +63,8 @@
                 <label for="runtime" class="col-md-2 control-label">影片时长(分钟)</label>
 
                 <div class="col-md-2">
-                    <input id="runtime" type="text" class="form-control" name="runtime" value="{{$film->runtime}}" required>
+                    <input id="runtime" type="text" class="form-control"
+                           name="runtime" value="{{ old('runtime', $film->runtime) }}" required>
 
                     @if ($errors->has('runtime'))
                         <span class="help-block">
@@ -76,7 +79,7 @@
 
                 <div class="col-md-8">
                     <textarea id="introduction" type="text" class="form-control" rows="8"
-                              name="introduction" required>{{$film->introduction}}</textarea>
+                              name="introduction" required>{{ old('introduction', $film->introduction) }}</textarea>
 
                     @if ($errors->has('introduction'))
                         <span class="help-block">
@@ -91,7 +94,7 @@
 
                 <div class="col-md-8">
                     <textarea id="tips" type="text" class="form-control" rows="4"
-                              name="tips">{{$film->tips}}</textarea>
+                              name="tips">{{ old('tips', $film->tips) }}</textarea>
 
                     @if ($errors->has('tips'))
                         <span class="help-block">
@@ -107,17 +110,28 @@
                         保存信息
                     </button>
                     @if($film->id)
-                        <form action="{{route('films.destroy', ['id' => $film->id])}}">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
-                            <button type="submit" class="btn btn-link btn-danger"
-                                    onclick="return confirm('确定删除影片？')"
-                                    style="margin-left: 50px">删除影片</button>
-                        </form>
+                        <button id="del_btn" type="button" class="btn btn-link btn-danger"
+                                onclick="return del_click()"
+                                style="margin-left: 50px">删除影片</button>
                     @endif
                 </div>
             </div>
         </form>
+        <form id="del_form" method="POST" name="del_form" action="{{route('films.destroy', ['id' => $film->id])}}">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+        </form>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+    function del_click() {
+        if (confirm('确定删除影片？')) {
+            document.getElementById('del_form').submit();
+        }
+        return false;
+    }
+</script>
 @endsection
