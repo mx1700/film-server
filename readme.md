@@ -56,11 +56,11 @@ ftp: v0.ftp.upyun.com
 获取电影地点卡 /api/films/1/location-cards
 
 ## TODO
-1. 增加上传指纹功能
 1. 启动屏配置
 1. 帮助配置
 1. 关于配置
 1. 意见反馈
+1. 增加上传指纹功能
 
 ## DONE
 1. 电影列表返回 url 地址

@@ -21,7 +21,7 @@
                 <td>
                     <a href="{{$item->card_url}}">
                         <img src="{{$item->card_url}}" style="height: 100px">
-                        {{$item->card}}
+                        {{ urldecode($item->card) }}
                     </a>
                 </td>
                 <td>

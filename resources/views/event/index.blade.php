@@ -23,7 +23,7 @@
                 <td>{{$event->end_time}}</td>
                 <td>{{ $event->type_name }}</td>
                 <td>
-                    <a href="{{$event->resources_url}}">{{$event->resources}}</a>
+                    <a href="{{$event->resources_url}}">{{ urldecode($event->resources) }}</a>
                 </td>
                 <td>
                     <form method="POST" action="{{ route('events.destroy', ['film' => $film->id, 'id' => $event->id]) }}">

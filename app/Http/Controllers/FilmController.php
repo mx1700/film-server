@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Film;
+use App\Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -44,6 +45,7 @@ class FilmController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $input['cover'] = Helper::coverUpYunUrl($input['cover']);
         $this->validator($input)->validate();
 
         Film::create($input);
@@ -82,6 +84,7 @@ class FilmController extends Controller
     public function update(Request $request, Film $film)
     {
         $input = $request->all();
+        $input['cover'] = Helper::coverUpYunUrl($input['cover']);
         $this->validator($input)->validate();
 
         $film->fill($input);

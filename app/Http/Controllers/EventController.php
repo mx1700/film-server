@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\Film;
+use App\Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -47,6 +48,7 @@ class EventController extends Controller
     public function store(Film $film, Request $request)
     {
         $input = $request->all();
+        $input['resources'] = Helper::coverUpYunUrl($input['resources']);
         $this->validator($input)->validate();
 
         $input['film_id'] = $film->id;
@@ -89,6 +91,7 @@ class EventController extends Controller
     public function update(Request $request, Film $film, Event $event)
     {
         $input = $request->all();
+        $input['resources'] = Helper::coverUpYunUrl($input['resources']);
         $this->validator($input)->validate();
 
         $event->fill($input);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper;
 use App\LocationCard;
 use Illuminate\Http\Request;
 use App\Film;
@@ -48,6 +49,8 @@ class LocationCardController extends Controller
     public function store(Film $film, Request $request)
     {
         $input = $request->all();
+        $input['card'] = Helper::coverUpYunUrl($input['card']);
+
         $this->validator($input)->validate();
         $input['film_id'] = $film->id;
         LocationCard::create($input);
@@ -92,6 +95,7 @@ class LocationCardController extends Controller
     public function update(Request $request, Film $film, LocationCard $locationCard)
     {
         $input = $request->all();
+        $input['card'] = Helper::coverUpYunUrl($input['card']);
         $this->validator($input)->validate();
 
         $locationCard->fill($input);
