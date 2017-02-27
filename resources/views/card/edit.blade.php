@@ -22,12 +22,12 @@
                 {{ method_field('PUT') }}
             @endif
 
-            <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('start_time') ? ' has-error' : '' }}">
                 <label for="start_time" class="col-md-2 control-label">开始时间</label>
 
                 <div class="col-md-3">
                         <input id="start_time" type="text" class="form-control" placeholder="00:00:00"
-                               name="start_time" value="{{$card->start_time}}" required>
+                               name="start_time" value="{{ old('start_time', $card->start_time) }}" required>
 
                     @if ($errors->has('start_time'))
                         <span class="help-block">
@@ -37,11 +37,12 @@
                 </div>
             </div>
 
-            <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('card') ? ' has-error' : '' }}">
                 <label for="card" class="col-md-2 control-label">卡片物料地址</label>
 
                 <div class="col-md-6">
-                    <input id="card" type="text" class="form-control" name="card" value="{{$card->card}}" required>
+                    <input id="card" type="text" class="form-control"
+                           name="card" value="{{ old('card', $card->card) }}" required>
 
                     @if ($errors->has('card'))
                         <span class="help-block">

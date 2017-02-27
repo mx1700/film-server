@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\LocationCard;
 use Illuminate\Http\Request;
 use App\Film;
+use Illuminate\Support\Facades\Validator;
+
 
 class LocationCardController extends Controller
 {
@@ -45,8 +47,8 @@ class LocationCardController extends Controller
      */
     public function store(Film $film, Request $request)
     {
-        //TODO:校验
         $input = $request->all();
+        $this->validator($input)->validate();
         $input['film_id'] = $film->id;
         LocationCard::create($input);
         return redirect()->route('locationCards.index', ['film' => $film->id]);
@@ -89,8 +91,9 @@ class LocationCardController extends Controller
      */
     public function update(Request $request, Film $film, LocationCard $locationCard)
     {
-        //TODO:校验
         $input = $request->all();
+        $this->validator($input)->validate();
+
         $locationCard->fill($input);
         $locationCard->save();
         return redirect()->route('locationCards.index', ['film' => $film->id]);
@@ -108,5 +111,30 @@ class LocationCardController extends Controller
     {
         $locationCard->delete();
         return redirect()->route('locationCards.index', ['film' => $film->id]);
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        Validator::extend('time', function($attribute, $value, $parameters, $validator) {
+            $cols = explode(':', $value);
+            if (count($cols) != 3) {
+                return false;
+            }
+            return $cols[1] < 60 && $cols[2] < 60;
+        });
+        $message = [
+            'required' => '不能为空',
+            'time' => '时间格式不正确'
+        ];
+        return Validator::make($data, [
+            'card' => 'required',
+            'start_time' => 'required|time',
+        ], $message);
     }
 }
