@@ -18,6 +18,17 @@
               action="{{ $event->id ? route('events.update', ['id'=> $event->id, 'film' => $film->id]) : route('events.store', ['film' => $film->id]) }}">
             {{ csrf_field() }}
 
+            @if($event->id)
+                {{ method_field('PUT') }}
+                {{--<div class="form-group">--}}
+                    {{--<label class="col-md-2 control-label">ID</label>--}}
+
+                    {{--<div class="col-md-3">--}}
+                        {{--<input type="text" class="form-control" value="{{$event->id}}" disabled>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            @endif
+
             <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
                 <label for="start_time" class="col-md-2 control-label">开始时间</label>
 

@@ -24,7 +24,7 @@
                 <td><img src="{{ $film->cover_url }}" style="height: 100px" /></td>
                 <td>{{ $film->runtime }} 分钟</td>
                 <td>
-                    <a class="btn btn-default">
+                    <a href="{{ route('locationCards.index', ['film' => $film->id]) }}" class="btn btn-default">
                         地点卡
                     </a>
                     <a href="{{ route('events.index', ['film' => $film->id]) }}" class="btn btn-default">事件</a>
