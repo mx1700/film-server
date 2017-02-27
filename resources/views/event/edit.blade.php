@@ -33,7 +33,9 @@
                 <label for="start_time" class="col-md-2 control-label">开始时间</label>
 
                 <div class="col-md-3">
-                        <input id="start_time" type="text" class="form-control" name="start_time" value="{{$event->start_time}}" required>
+                        <input id="start_time" type="text" class="form-control"
+                               placeholder="00:00:00"
+                               name="start_time" value="{{$event->start_time}}" required>
 
                     @if ($errors->has('start_time'))
                         <span class="help-block">
@@ -47,7 +49,9 @@
                 <label for="end_time" class="col-md-2 control-label">结束时间</label>
 
                 <div class="col-md-3">
-                    <input id="end_time" type="text" class="form-control" name="end_time" value="{{$event->end_time}}" required>
+                    <input id="end_time" type="text" class="form-control"
+                           placeholder="00:00:00"
+                           name="end_time" value="{{$event->end_time}}" required>
 
                     @if ($errors->has('end_time'))
                         <span class="help-block">

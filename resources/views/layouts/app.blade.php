@@ -84,5 +84,19 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="/js/cleave.js"></script>
+    <script>
+        var cleave = new Cleave('#start_time', {
+            delimiter: ':',
+            blocks: [2, 2, 2],
+            numericOnly: true
+        });
+        var cleave2 = new Cleave('#end_time', {
+            delimiter: ':',
+            blocks: [2, 2, 2],
+            numericOnly: true
+        });
+    </script>
+    @yield('js')
 </body>
 </html>
