@@ -22,7 +22,7 @@
                 <td>{{ $film->id }}</td>
                 <td>{{ $film->name }}</td>
                 <td><img src="{{ $film->cover_url }}" style="height: 100px" /></td>
-                <td>{{ $film->runtime }} 分钟</td>
+                <td>{{ $film->runtime }}</td>
                 <td>
                     <a href="{{ route('locationCards.index', ['film' => $film->id]) }}" class="btn btn-default">
                         地点卡
