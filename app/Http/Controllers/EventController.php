@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Film;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
 {
@@ -21,7 +22,6 @@ class EventController extends Controller
      */
     public function index(Film $film)
     {
-        //dd($film->events()->get()->toArray());
         $events = $film->events()->orderBy('start_time')->get();
         return View('event.index', ['events' => $events, 'film' => $film]);
     }
@@ -46,8 +46,9 @@ class EventController extends Controller
      */
     public function store(Film $film, Request $request)
     {
-        //TODO:校验
         $input = $request->all();
+        $this->validator($input)->validate();
+
         $input['film_id'] = $film->id;
         Event::create($input);
         return redirect()->route('events.index', ['film' => $film->id]);
@@ -70,7 +71,6 @@ class EventController extends Controller
      * @param Film $film
      * @param Event $event
      * @return \Illuminate\Http\Response
-     * @internal param int $id
      */
     public function edit(Film $film, Event $event)
     {
@@ -88,8 +88,9 @@ class EventController extends Controller
      */
     public function update(Request $request, Film $film, Event $event)
     {
-        //TODO:校验
         $input = $request->all();
+        $this->validator($input)->validate();
+
         $event->fill($input);
         $event->save();
         return redirect()->route('events.index', ['film' => $film->id]);
@@ -107,5 +108,24 @@ class EventController extends Controller
     {
         $event->delete();
         return redirect()->route('events.index', ['film' => $film->id]);
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        $message = [
+            'required' => '不能为空',
+            'time' => '时间格式不正确'
+        ];
+        return Validator::make($data, [
+            'resources' => 'required',
+            'start_time' => 'required|time',
+            'end_time' => 'required|time',
+        ], $message);
     }
 }

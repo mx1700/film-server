@@ -121,13 +121,6 @@ class LocationCardController extends Controller
      */
     protected function validator(array $data)
     {
-        Validator::extend('time', function($attribute, $value, $parameters, $validator) {
-            $cols = explode(':', $value);
-            if (count($cols) != 3) {
-                return false;
-            }
-            return $cols[1] < 60 && $cols[2] < 60;
-        });
         $message = [
             'required' => '不能为空',
             'time' => '时间格式不正确'

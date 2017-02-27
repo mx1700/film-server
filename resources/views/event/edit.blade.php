@@ -20,22 +20,15 @@
 
             @if($event->id)
                 {{ method_field('PUT') }}
-                {{--<div class="form-group">--}}
-                    {{--<label class="col-md-2 control-label">ID</label>--}}
-
-                    {{--<div class="col-md-3">--}}
-                        {{--<input type="text" class="form-control" value="{{$event->id}}" disabled>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
             @endif
 
-            <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('start_time') ? ' has-error' : '' }}">
                 <label for="start_time" class="col-md-2 control-label">开始时间</label>
 
                 <div class="col-md-3">
                         <input id="start_time" type="text" class="form-control"
                                placeholder="00:00:00"
-                               name="start_time" value="{{$event->start_time}}" required>
+                               name="start_time" value="{{ old('start_time', $event->start_time) }}" required>
 
                     @if ($errors->has('start_time'))
                         <span class="help-block">
@@ -45,13 +38,13 @@
                 </div>
             </div>
 
-            <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('end_time') ? ' has-error' : '' }}">
                 <label for="end_time" class="col-md-2 control-label">结束时间</label>
 
                 <div class="col-md-3">
                     <input id="end_time" type="text" class="form-control"
                            placeholder="00:00:00"
-                           name="end_time" value="{{$event->end_time}}" required>
+                           name="end_time" value="{{ old('end_time', $event->end_time) }}" required>
 
                     @if ($errors->has('end_time'))
                         <span class="help-block">
@@ -61,23 +54,26 @@
                 </div>
             </div>
 
-            <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
                 <label for="type" class="col-md-2 control-label">物料类型</label>
 
                 <div class="col-md-2">
                     <select id="type" name="type" class="form-control">
                         @foreach(\App\Event::$type_names as $key => $name)
-                            <option value="{{$key}}" {{$key == $event->type ? 'selected' : ''}}>{{$name}}</option>
+                            <option value="{{$key}}" {{$key == old('type', $event->type) ? 'selected' : ''}}>
+                                {{$name}}
+                            </option>
                         @endforeach
                     </select>
                 </div>
             </div>
 
-            <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('resources') ? ' has-error' : '' }}">
                 <label for="resources" class="col-md-2 control-label">物料地址</label>
 
                 <div class="col-md-6">
-                    <input id="resources" type="text" class="form-control" name="resources" value="{{$event->resources}}" required>
+                    <input id="resources" type="text" class="form-control"
+                           name="resources" value="{{ old('resources', $event->resources) }}" required>
 
                     @if ($errors->has('resources'))
                         <span class="help-block">
