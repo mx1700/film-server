@@ -53,7 +53,13 @@ ftp: v0.ftp.upyun.com
 获取单个电影信息 /api/films/1
 
 获取电影互动内容 /api/films/1/events
+
 获取电影地点卡 /api/films/1/location-cards
+
+获取帮助页信息 /api/help_info
+
+添加反馈  POST  /api/feedback
+参数：content=xxx,platform={1 android,2 iphone}
 
 ## TODO
 1. 启动屏配置
@@ -82,5 +88,7 @@ ftp: v0.ftp.upyun.com
 1. 时间选择增加相应控件
 1. 补完校验规则
 1. 时长改为 time 类型
+1. 意见反馈 api
+1. 帮助信息 api
 
 
