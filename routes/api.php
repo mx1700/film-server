@@ -47,6 +47,21 @@ Route::get('/films/{film}/location-cards', function (\App\Film $film) {
     return $film->locationCards()->orderBy('start_time')->get();
 });
 
+Route::post('/feedback', function (Request $request) {
+    $content = $request->get('content');
+    $platform = $request->get('platform');
+    $user = $request->user();
+    \App\Feedback::create([
+        'content' => $content,
+        'user_id' => $user ? $user->id : 0,
+        'platform' => $platform,
+    ]);
+});
+
+Route::get('/help_info', function() {
+    return \App\SiteConfig::helpInfo();
+});
+
 //Route::get('/user', function() {
 //    return Auth::user();
 //});
