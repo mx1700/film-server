@@ -26,3 +26,6 @@ Route::get('/home', 'HomeController@index');
 $this->get('/auth/change-password', 'Auth\ChangePasswordController@showForm')->name('change-password');
 $this->post('/auth/change-password', 'Auth\ChangePasswordController@changePassword');
 
+Route::get('/conf/help', 'HelpConfController@index')->name('conf.help');
+Route::post('/conf/help', 'HelpConfController@update');
+

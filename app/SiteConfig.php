@@ -10,9 +10,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class SiteConfig extends Model
 {
+    protected $fillable = [
+        'name', 'image_url'
+    ];
+
     static function get($name) {
         $line = static::where('name', '=', $name)->first();
-        return $line ? json_decode($line->value) : null;
+        return $line ? json_decode($line->value, true) : null;
     }
 
     static function set($name, $value) {
@@ -46,6 +50,8 @@ class SiteConfig extends Model
                     $item['image_url'] = $base . $item['image_url'];
                     return $item;
                 }, $r);
+            } else {
+                return $r;
             }
         } else {
             static::set($name, $value);

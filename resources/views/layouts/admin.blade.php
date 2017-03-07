@@ -10,9 +10,9 @@
                 <h5>配置项</h5>
                 <ul class="nav nav-sidebar">
                     <li><a href="{{ route('films.index') }}">影片管理</a></li>
-                    <li><a href="#">启动屏</a></li>
-                    <li><a href="#">帮助</a></li>
-                    <li><a href="#">关于</a></li>
+                    {{--<li><a href="#">启动屏</a></li>--}}
+                    <li><a href="{{ route('conf.help') }}">帮助</a></li>
+                    {{--<li><a href="#">关于</a></li>--}}
                 </ul>
                 <ul class="nav nav-sidebar">
                     <li><a href="">意见反馈</a></li>
