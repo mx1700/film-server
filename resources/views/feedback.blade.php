@@ -7,7 +7,7 @@
 @endif
 <div class="panel panel-default">
     <div class="panel-heading">
-        意见返回
+        意见反馈
     </div>
     <div class="panel-body">
             <table class="table table-hover">
