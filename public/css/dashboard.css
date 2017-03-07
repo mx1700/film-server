@@ -110,3 +110,7 @@ nav.navbar-default {
   display: inline-block;
   border-radius: 50%;
 }
+
+.navbar-inverse .navbar-brand {
+  color: #3097d1;
+}

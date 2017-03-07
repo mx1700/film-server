@@ -29,3 +29,5 @@ $this->post('/auth/change-password', 'Auth\ChangePasswordController@changePasswo
 Route::get('/conf/help', 'HelpConfController@index')->name('conf.help');
 Route::post('/conf/help', 'HelpConfController@update');
 
+Route::get('/feedback', 'FeedbackController@index')->name('feedback');
+
