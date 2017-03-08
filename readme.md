@@ -25,7 +25,6 @@ $ php artisan key:generate
 ####初始化数据库
 ``` bash
 $ php artisan migrate
-$ php artisan db:seed --class=UserTableSeeder
 $ php artisan db:seed --class=EventTableSeeder
 $ php artisan db:seed --class=LocationCardTableSeeder
 ```
