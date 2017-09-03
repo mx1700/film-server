@@ -61,11 +61,17 @@ ftp: v0.ftp.upyun.com
 
 获取帮助页信息 /api/help_info
 
-添加反馈  POST  /api/feedback
+添加反馈  POST  /api/feedback  
 参数：content=xxx,platform={1 android,2 iphone}
 
-微信登陆 GET /api/weixin_login?code=WEIXIN_CODE
+微信登陆 GET /api/weixin_login?code=WEIXIN_CODE  
 返回: { "user_id": 4, "access_token": "TOKEN", "name": "苍井空" }
+
+access_token 使用方法:  
+request header 里增加头  
+Authorization: Bearer ACCESS_TOKEN
+
+获取当前登陆用户信息 GET /user
 
 ## TODO
 1. 微信登陆
@@ -74,6 +80,7 @@ ftp: v0.ftp.upyun.com
 1. 启动屏配置
 1. 关于配置
 1. 增加上传指纹功能
+1. 限制后台只能管理员登陆
 
 ## DONE
 1. 电影列表返回 url 地址
