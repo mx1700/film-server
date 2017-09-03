@@ -21,6 +21,10 @@ $ composer install
 $ php artisan key:generate
 ```
 
+初始化oauth密钥
+```bash
+$ php artisan passport:install
+```
 
 ####初始化数据库
 ``` bash
@@ -60,7 +64,13 @@ ftp: v0.ftp.upyun.com
 添加反馈  POST  /api/feedback
 参数：content=xxx,platform={1 android,2 iphone}
 
+微信登陆 GET /api/weixin_login?code=WEIXIN_CODE
+返回: { "user_id": 4, "access_token": "TOKEN", "name": "苍井空" }
+
 ## TODO
+1. 微信登陆
+1. 剧集推荐
+1. 弹幕配置
 1. 启动屏配置
 1. 关于配置
 1. 增加上传指纹功能
