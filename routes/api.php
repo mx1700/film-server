@@ -13,6 +13,14 @@ use App\User;
 |
 */
 
+/*
+ * 只加 middleware('auth:api') 后
+ * $request->user() 和 Auth::user 都能获取当前用户，但是如果鉴权失败会报错鉴权失败
+ *
+ * 不加 auth 中间件，又想获取用户可以两种方式
+ * 1. Auth::guard('api')->user();
+ * 2. Auth::shouldUse('api'); $request->user();
+ */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
