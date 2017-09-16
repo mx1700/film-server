@@ -74,6 +74,36 @@
                 </div>
             </div>
 
+            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                <label for="type" class="col-md-2 control-label">影片类型</label>
+
+                <div class="col-md-2">
+                    <input id="type" type="text" class="form-control" placeholder=""
+                           name="type" value="{{ old('type', $film->type) }}" required>
+
+                    @if ($errors->has('type'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('type') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group{{ $errors->has('releaseDate') ? ' has-error' : '' }}">
+                <label for="releaseDate" class="col-md-2 control-label">上映时间</label>
+
+                <div class="col-md-3">
+                    <input id="releaseDate" type="date" class="form-control" placeholder="00:00:00"
+                           name="releaseDate" value="{{ old('releaseDate', $film->releaseDate) }}" required>
+
+                    @if ($errors->has('releaseDate'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('releaseDate') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
             <div class="form-group{{ $errors->has('introduction') ? ' has-error' : '' }}">
                 <label for="introduction" class="col-md-2 control-label">简介</label>
 

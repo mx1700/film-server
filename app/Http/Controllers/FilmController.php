@@ -115,7 +115,8 @@ class FilmController extends Controller
         $message = [
             'required' => '不能为空',
             'numeric' => '必须是数字',
-            'time' => '时间格式不正确'
+            'time' => '时间格式不正确',
+            'releaseDate' => '上映时间格式不正确'
         ];
 
         return Validator::make($data, [
@@ -124,6 +125,7 @@ class FilmController extends Controller
             'runtime' => 'required|time',
             'introduction' => 'required',
             'tips' => 'required',
+            'releaseDate' => 'date',
         ], $message);
     }
 }
