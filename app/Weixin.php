@@ -64,6 +64,7 @@ class Weixin extends Model
         $union_id = isset($weixin_info['unionid']) && $weixin_info['unionid'] ?
             $weixin_info['unionid'] : null;
         $name = $weixin_info['nickname'];
+        $head_img_url = $weixin_info['headimgurl'];
         $weixinUser = self::findByWeixinId($open_id, $union_id);
 //        dd($weixinUser);
         $user = null;
@@ -88,6 +89,7 @@ class Weixin extends Model
         $token = $user->createToken('app')->accessToken;
         return [
             'user_id' => $user->id,
+            'head_img_url' => $head_img_url,
             'access_token' => $token,
             'name' => $user->name,
         ];
