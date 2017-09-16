@@ -94,6 +94,16 @@ Route::post('/feedback', function (Request $request) {
     ]);
 });
 
+Route::get('/events/{event}/barrage', function (\App\Event $event) {
+    return [
+        ['time' => 3, 'content' => '弹幕内容1'],
+        ['time' => 4, 'content' => '弹幕内容2'],
+        ['time' => 5, 'content' => '弹幕内容3'],
+        ['time' => 5, 'content' => '弹幕内容4'],
+        ['time' => 5, 'content' => '弹幕内容5'],
+    ];
+});
+
 Route::get('/help_info', function() {
     return \App\SiteConfig::helpInfo();
 });
