@@ -20,7 +20,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $background_image
  * @property string $introduction
  * @property int $runtime
- * @property string tips
+ * @property string $tips
+ * @property string $type
+ * @property string $releaseDate
  * @property string $created_at
  * @property string $updated_at
  */
