@@ -96,6 +96,7 @@ Route::post('/feedback', function (Request $request) {
 
 Route::get('/events/{event}/barrage', function (\App\Event $event) {
     $list = $event->barrages()->orderBy('id')->get()->toArray();
+    if(count($list) == 0) return [];
     $box = array_chunk($list, 8);
     $result = $box[rand(0, count($box) - 1)];
     usort($result, function($a, $b) {
