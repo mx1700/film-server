@@ -19,6 +19,7 @@ Auth::routes();
 Route::resource('films', 'FilmController');
 Route::resource('films/{film}/events', 'EventController');
 Route::resource('films/{film}/locationCards', 'LocationCardController');
+Route::resource('events/{event}/barrages', 'BarrageController');
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');

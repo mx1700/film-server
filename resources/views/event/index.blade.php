@@ -30,6 +30,9 @@
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <a href="{{ route('events.edit', ['film' => $film->id, 'id' => $event->id]) }}" class="btn btn-default">编辑</a>
+                        @if($event->type == 1)
+                        <a href="{{ route('barrages.index', ['event' => $event->id]) }}" class="btn btn-default">弹幕</a>
+                        @endif
                         <button type="submit" class="btn btn-danger"
                                 onclick="return confirm('确定删除事件？')">删除</button>
                     </form>

@@ -47,6 +47,11 @@ class Event extends Model
         return $this->belongsTo('App\Film');
     }
 
+    public function barrages()
+    {
+        return $this->hasMany('App\Barrage');
+    }
+
     public function getResourcesUrlAttribute()
     {
         $base = \Config::get('url.static_base');

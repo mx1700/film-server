@@ -95,13 +95,13 @@ Route::post('/feedback', function (Request $request) {
 });
 
 Route::get('/events/{event}/barrage', function (\App\Event $event) {
-    return [
-        ['time' => 3, 'content' => '弹幕内容1'],
-        ['time' => 4, 'content' => '弹幕内容2'],
-        ['time' => 5, 'content' => '弹幕内容3'],
-        ['time' => 5, 'content' => '弹幕内容4'],
-        ['time' => 5, 'content' => '弹幕内容5'],
-    ];
+    $list = $event->barrages()->orderBy('id')->get()->toArray();
+    $box = array_chunk($list, 8);
+    $result = $box[rand(0, count($box) - 1)];
+    usort($result, function($a, $b) {
+        return $a['time'] - $b['time'];
+    });
+    return $result;
 });
 
 Route::get('/help_info', function() {
