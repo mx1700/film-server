@@ -2,5 +2,5 @@
 
 return [
     'app_id' => env('WX_APP_ID', ''),
-    'secret' => env('WX_SECRET', '')
+    'app_secret' => env('WX_APP_SECRET', '')
 ];

@@ -22,9 +22,9 @@
                 @foreach($barrages as $barrage)
                     <tr>
                         <td>{{ $loop->index + 1 }}</td>
-                        <td><input class="time" type="text" name="time[{{$loop->index}}]"
+                        <td><input class="time form-control" type="text" name="time[{{$loop->index}}]"
                                    value="{{ old("time[{$loop->index}]", $barrage['time'])}}" placeholder="00:00:00" /></td>
-                        <td><input type="text" name="content[{{$loop->index}}]"
+                        <td><input class="form-control" type="text" name="content[{{$loop->index}}]"
                                    value="{{ old("content[{$loop->index}]", $barrage['content']) }}" style="width: 440px" /></td>
                     </tr>
                 @endforeach
