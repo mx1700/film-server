@@ -24,7 +24,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Weixin extends Model
 {
-
     protected $fillable = [
         'user_id', 'open_id', 'union_id', 'user_info',
     ];
@@ -44,18 +43,36 @@ class Weixin extends Model
     }
 
     static function getWeixinUserInfo($code) {
-        return json_decode('
-{
-    "openid": "openo6_bmasdasdsad6_2sgVt7hMZOPfL",
-    "nickname": "苍井空",
-    "sex": "1",
-    "province": "北京",
-    "country": "北京",
-    "headimgurl": "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
-    "privilege": [],
-    "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
-}
-        ', true);
+        $appId = config('weixin.app_id');
+        $secret = config('weixin.secret');
+//        dd($appId, $secret);
+        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid={$appId}&secret={$secret}&code={$code}&grant_type=authorization_code";
+        $accessResult = self::request($url);
+//        dd($accessResult);
+        $accessToken = $accessResult['access_token'];
+        $openId = $accessResult['openid'];
+
+        $url = "https://api.weixin.qq.com/sns/userinfo?access_token={$accessToken}&openid={$openId}&lang=zh_CN";
+        $userInfo = self::request($url);
+        return $userInfo;
+//        return json_decode('
+//{
+//    "openid": "openo6_bmasdasdsad6_2sgVt7hMZOPfL",
+//    "nickname": "苍井空",
+//    "sex": "1",
+//    "province": "北京",
+//    "country": "北京",
+//    "headimgurl": "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
+//    "privilege": [],
+//    "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
+//}
+//        ', true);
+    }
+
+    static function request($url) {
+        $content = file_get_contents($url);
+        $accessResult = json_decode($content, true);
+        return $accessResult;
     }
 
     static function login($code) {
