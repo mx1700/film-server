@@ -73,7 +73,7 @@ Route::post('/feedback', function (Request $request) {
     ]);
 });
 
-Route::get('/events/{event}/barrage', function (\App\Event $event) {
+Route::get('/events/{event}/barrages', function (\App\Event $event) {
     $list = $event->barrages()->orderBy('id')->get()->toArray();
     if(count($list) == 0) return [];
     $box = array_chunk($list, 8);
