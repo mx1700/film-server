@@ -104,6 +104,21 @@
                 </div>
             </div>
 
+            <div class="form-group{{ $errors->has('sort') ? ' has-error' : '' }}">
+                <label for="sort" class="col-md-2 control-label">排序</label>
+
+                <div class="col-md-3">
+                    <input id="sort" type="number" class="form-control" placeholder=""
+                           name="sort" value="{{ old('sort', $film->sort) }}" required>
+
+                    @if ($errors->has('sort'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('sort') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
             <div class="form-group{{ $errors->has('introduction') ? ' has-error' : '' }}">
                 <label for="introduction" class="col-md-2 control-label">简介</label>
 

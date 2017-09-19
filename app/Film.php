@@ -23,18 +23,25 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $tips
  * @property string $type
  * @property string $releaseDate
+ * @property string $sort
  * @property string $created_at
  * @property string $updated_at
  */
 class Film extends Model
 {
     protected $fillable = [
-        'name', 'cover', 'background_image', 'introduction', 'runtime', 'tips', 'type', 'releaseDate'
+        'name', 'cover', 'background_image', 'introduction', 'runtime', 'tips', 'type', 'releaseDate', 'sort'
     ];
 
     protected $appends = ['cover_url', 'background_image_url'];
 
     protected $hidden = ['cover', 'background_image', 'created_at', 'updated_at'];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->sort = 0;
+    }
 
     public function getCoverUrlAttribute()
     {

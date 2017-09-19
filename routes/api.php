@@ -37,27 +37,6 @@ Route::get('/weixin_login', function (Request $request) {
     $code = $request->get('code');
     $user = \App\Weixin::login($code);
     return $user;
-    //TODO:使用 code 换取 access_token,然后获取用户信息
-    //通过 open——id 获取对应用户信息，如果没有，则注册
-    //登陆
-
-    //https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
-    //access_token， openid  //{"errcode":40029,"errmsg":"invalid code"}
-    //https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
-
-    /*
-     * {    "openid":" OPENID",
- " nickname": NICKNAME,
- "sex":"1",
- "province":"PROVINCE"
- "city":"CITY",
- "country":"COUNTRY",
- "headimgurl":    "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ
-4eMsv84eavHiaiceqxibJxCfHe/46",
-"privilege":[ "PRIVILEGE1" "PRIVILEGE2"     ],
- "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
-}
-     */
 });
 
 Route::get('/test', function (Request $request) {
@@ -65,7 +44,7 @@ Route::get('/test', function (Request $request) {
 });
 
 Route::get('/films', function () {
-    return \App\Film::all();
+    return \App\Film::orderBy('sort', 'desc')->orderBy('id', 'desc')->get();
 });
 
 Route::get('/films/{film}', function (\App\Film $film) {

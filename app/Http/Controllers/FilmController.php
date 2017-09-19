@@ -22,7 +22,7 @@ class FilmController extends Controller
      */
     public function index()
     {
-        $films = Film::orderBy('id', 'desc')->get();
+        $films = Film::orderBy('sort', 'desc')->orderBy('id', 'desc')->get();
         return view('film.index', ['films' => $films]);
     }
 
@@ -116,7 +116,8 @@ class FilmController extends Controller
             'required' => '不能为空',
             'numeric' => '必须是数字',
             'time' => '时间格式不正确',
-            'releaseDate' => '上映时间格式不正确'
+            'releaseDate' => '上映时间格式不正确',
+            'sort' => '排序必须是数字',
         ];
 
         return Validator::make($data, [

@@ -13,6 +13,7 @@
                 <td>名称</td>
                 <td>封面</td>
                 <td>影片时长</td>
+                <td>排序</td>
                 <td>操作</td>
             </tr>
             </thead>
@@ -23,6 +24,7 @@
                 <td>{{ $film->name }}</td>
                 <td><img src="{{ $film->cover_url }}" style="height: 100px" /></td>
                 <td>{{ $film->runtime }}</td>
+                <td>{{ $film->sort }}</td>
                 <td>
                     <a href="{{ route('locationCards.index', ['film' => $film->id]) }}" class="btn btn-default">
                         地点卡
