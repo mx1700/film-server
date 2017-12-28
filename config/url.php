@@ -7,5 +7,5 @@
  */
 
 return [
-    'static_base' => 'http://film-server.b0.upaiyun.com/'
+    'static_base' => 'http://p.duodongyule.com/'
 ];
