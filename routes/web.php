@@ -21,7 +21,7 @@ Route::resource('films/{film}/events', 'EventController');
 Route::resource('films/{film}/locationCards', 'LocationCardController');
 Route::resource('events/{event}/barrages', 'BarrageController');
 
-Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
 $this->get('/auth/change-password', 'Auth\ChangePasswordController@showForm')->name('change-password');
@@ -31,4 +31,6 @@ Route::get('/conf/help', 'HelpConfController@index')->name('conf.help');
 Route::post('/conf/help', 'HelpConfController@update');
 
 Route::get('/feedback', 'FeedbackController@index')->name('feedback');
+
+Route::get('/about', 'AboutController@index');
 
